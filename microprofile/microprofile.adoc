@@ -31,7 +31,7 @@ Java Enterprise Profiles
 ------------------------
 [float]
 === Java EE for Web Applications
-* Web Profile since JEE 6
+* Full Profile and Web Profile since JEE 6
 * Application Servers can implement one or the other or both Profiles
 
 [float]
@@ -93,7 +93,7 @@ public class ServiceBean {
         this.userId = userId;
     }
     
-    private void doSomething() {
+    public void doSomething() {
         // do something  
     }
 }
@@ -112,7 +112,7 @@ public class ServiceBean {
         this.config = config;
     }
     
-    private void doSomething() {
+    public void doSomething() {
         String userId = config.getValue("userId", String.class);
         
         // do something  
@@ -174,7 +174,7 @@ Micro Profile Health, cont.
 public class AppReadinessCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
-        if (!isHealthy()) {
+        if (!isReady()) {
             return HealthCheckResponse
                     .named(App.class.getSimpleName() + "Readiness")
                     .withData("services", "not available")
